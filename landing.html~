@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IWH'15</title>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300,600,700,800' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300,200' rel='stylesheet' type='text/css'>
+<link href="css/font-awesome.min.css" rel="stylesheet" media="screen">
+<link href="css/responsive.css" rel="stylesheet" media="screen" type="text/css"/>
+<link rel="stylesheet" href="sidr/stylesheets/jquery.sidr.dark.css">
+<script src="js/jquery.min.js"></script>
+<script src="sidr/jquery.sidr.min.js"></script>
+<script type="text/javascript" src="js/smoothscroll.js"></script>
+
+</head>
+
+<body>
+
+
+    <div class="banner">
+    	<div class="container">
+        	<div class="header-text">
+        	 <h1>International Women Hackathon'15</h1>
+              <h2><names>EXTANT </names>is a web application designed by <names>Sarah Masud  & Farheen Nilofer</names></h2>
+                <h2><names>THEME:</names> Productive Gaminification</h2>
+                <br><br>
+                <div class="button-section">
+                	<ul>
+                        <li><a href="home.html" class="top-button green">Get Started</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="color-border">
+    </div>
+
+
+    <div class="footer">
+        	<div class="container">
+            	<div class="infooter">
+                <p class="copyright">SOURCE CODE</p>
+            	</div>
+            <ul class="socialmedia">
+                <li><a href="https://www.github.com/sara-02"><i class="icon-github"></i></a></li>
+            </ul>
+            </div>
+        </div>
+</body>
+</html>

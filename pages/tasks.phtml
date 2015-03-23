@@ -1,0 +1,122 @@
+<?php session_start();?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>IWH'15</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    </head>
+    <script>
+		function addRow(tableID) {
+	var table = document.getElementById(tableID);
+	var rowCount = table.rows.length;
+		var row = table.insertRow(rowCount);
+		var colCount = table.rows[0].cells.length;
+		for(var i=0; i<colCount; i++) {
+			var newcell = row.insertCell(i);
+			newcell.innerHTML = table.rows[0].cells[i].innerHTML;
+		}
+	}
+
+
+function deleteRow(tableID) {
+	var table = document.getElementById(tableID);
+	var rowCount = table.rows.length;
+	for(var i=0; i<rowCount; i++) {
+		var row = table.rows[i];
+		var chkbox = row.cells[0].childNodes[0];
+		if(null != chkbox && true == chkbox.checked) {
+			if(rowCount <= 1) { 						// limit the user from removing all the fields
+				alert("Cannot Remove all the Passenger.");
+				break;
+			}
+			table.deleteRow(i);
+			rowCount--;
+			i--;
+		}
+	}
+}
+    </script>
+<style>
+header {
+	top:0px;
+
+	position:fixed;
+
+	width:100%;
+	 background-color:white;
+
+	padding: 0 10px 0 20px;
+	height: 90px;
+	margin: 0px;
+	padding: 10px;
+	color: #339933;
+
+	letter-spacing:2px;
+	}
+
+</style>
+
+<body>
+
+<header>
+    <h1 style="font-size:70px"><i><b>TAskmAniA</b></i> </h1>
+
+
+
+<h2 style="font-size:20px; color:white; text-align:center; padding:5px;word-spacing:10px;">
+
+<a href="home.phtml" style="color:#339933;  " target="">Home</a>     <a href="about_us.phtml" style="color:#339933;  "  target="">About Us</a>    <a href="help.phtml" style="color:#339933;  "target="_blank">Help</a>     <a href="logout.php"  style="color:#339933 "  target ="" >Logout </a>
+
+</h2 >
+
+</header>
+        <form action="tasks.php" method="POST">
+				<p>
+					<input type="button" value="Add New Task" onClick="addRow('dataTable')" />
+					<input type="button" value="Remove Tasks" onClick="deleteRow('dataTable')"  />
+					<p>(All acions apply only to entries with check marked check boxes only.)</p>
+				</p>
+               <table id="dataTable" class="form" border="1">
+                  <tbody>
+                    <tr>
+                      <p>
+						<td><input type="checkbox" required="required" name="chk[]" checked="checked" /></td>
+						<td>
+							<label>Task Name</label>
+							<input type="text" required="required" name="Name[]">
+						 </td>
+						 <td>
+							<label for="BX_age">No.of hours</label>
+							<input type="text" required="required" class="small"  name="Hours[]">
+					     </td>
+							</p>
+                    </tr>
+                    </tbody>
+                </table>
+				<div class="clear"></div>
+            </fieldset>
+
+
+			<input class="submit" type="submit" value="Submit;" />
+
+        </form>
+
+
+<div class="footer">
+            <div class="container">
+                <div class="infooter">
+                <p class="copyright">SOURCE CODE</p>
+                </div>
+            <ul class="socialmedia">
+                <li><a href="https://github.com/sara-02/IWH-15"><i class="icon-github"></i></a></li>
+            </ul>
+            </div>
+        </div>
+    </body>
+
+</html>
+
+
+
+
+

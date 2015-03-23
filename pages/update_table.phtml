@@ -1,0 +1,200 @@
+<?php session_start();?>
+<html>
+<head>
+<!-- Bootstrap Core CSS -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="../bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<?php
+            $v1=(int)_$POST["grpid"];
+            $sql="select tname,num_of_hours from tasks where gid=$v1 AND today_date IN(select s_date from group_tasks where gid=$v1)";
+            $res=mysql_query($sql)
+           $res=mysql_query($sql);
+        if(!res)
+        {
+        die('sql error'.mysql_error());
+        }
+
+?>
+<style>
+header {
+    top:0px;
+
+    position:fixed;
+
+    width:100%;
+     background-color:white;
+
+    padding: 0 10px 0 20px;
+    height: 90px;
+    margin: 0px;
+    padding: 10px;
+    color: #339933;
+
+    letter-spacing:2px;
+    }
+
+</style>
+
+<body>
+
+<header>
+    <h1 style="font-size:70px"><i><b>TAskmAniA</b></i> </h1>
+
+
+
+<h2 style="font-size:20px; color:white; text-align:center; padding:5px;word-spacing:10px;">
+
+<a href="home.phtml" style="color:#339933;  " target="">Home</a>     <a href="about_us.phtml" style="color:#339933;  "  target="">About Us</a>    <a href="help.phtml" style="color:#339933;  "target="_blank">Help</a>     <a href="logout.php"  style="color:#339933 "  target ="" >Logout </a>
+
+</h2 >
+
+</header>
+<form action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="get">
+<div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Context Classes
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+
+                                            <th>Task Name</th>
+                                            <th>Time Allocated</th>
+                                              <th>Time Given</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                while($row1 = mysql_fetch_array($res))
+                             {
+
+                              echo "<tr>";
+                              echo "<th><input type=\"number\" name=\"task_name[]\" value=".$row1[task_name]."Disabled></th>"
+                       echo "<th><input type=\"number\" name=\"no_of_hours[]\" value=".$row1[num_of_hours]."Disabled></th>"
+                            echo "<th><input type=\"number\" name=\"hours_given[]\" required></th>"
+
+                             }
+                             <?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+<div class="button-section">
+                    <ul>
+
+                        <li><button class="top-button green" style="float:right">SUBMIT PROGRESS</button></li>
+                    </ul>
+                    </div>
+</form>
+
+<!-- jQuery -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="../bower_components/DataTables/media/js/jquery.dataTables.min.js"></script>
+    <script src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+                responsive: true
+        });
+    });
+    </script>
+    <div class="footer">
+            <div class="container">
+                <div class="infooter">
+                <p class="copyright">SOURCE CODE</p>
+                </div>
+            <ul class="socialmedia">
+                <li><a href="https://github.com/sara-02/IWH-15"><i class="icon-github"></i></a></li>
+            </ul>
+            </div>
+        </div>
+</body>
+</html>
+<? php require 'dbms_basic.php'; ?>
+<?php
+
+    $li = mysql_connect($dbhost, $dbuser, $dbpass);
+    if(!$li )
+    {
+          die('Could not connect: ' . mysql_error());
+    }
+
+    $conc = mysql_select_db($dbdata,$li);
+    if(!$conc )
+    {
+         die('Could not connect to db: ' . mysql_error());
+    }
+    $Name=$_GET['task_name'];
+    $Hours=$_GETT['num_of_hours'];
+    $hour_giv=$GET['hours_given'];
+             foreach($Name as $a => $b)
+                    {
+                        $v6=$Name[$a];
+                        $v7=(int)$Hours[$a];
+                        $v8=(int)$hour_giv[$a];
+                        $sql="select task_id from tasks where group_id=$v1 AND task_name='$v6'";
+                        if(!mysql_query($sql))
+                        {
+                            die('sql error'.mysql_error());
+                        }
+                        $row1 = mysql_fetch_array(mysql_query($sql));
+                        $v9=(int)$row1[0];
+
+                        $sql="Insert into tasks(task_id,task_name,group_id,num_of_hours,performance,today_date,hours_given) values($v9,'$v6',$v1,'$v7',0,CURDATE(),$v8)";
+    if(!mysql_query($sql))
+    {
+        die('sql error'.mysql_error());
+    }
+}
+    header("location:running.phtml");
+    mysql_close($li);
+?>
+
+

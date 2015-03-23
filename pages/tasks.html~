@@ -1,0 +1,76 @@
+<html>
+<body>
+<script>
+function deleteRow(row)
+{
+    var i=row.parentNode.parentNode.rowIndex;
+    document.getElementById('POITable').deleteRow(i);
+}
+
+
+function insRow()
+{
+    console.log( 'hi');
+    var x=document.getElementById('POITable');
+    var new_row = x.rows[1].cloneNode(true);
+    var len = x.rows.length;
+    new_row.cells[0].innerHTML = len;
+    
+    var inp1 = new_row.cells[1].getElementsByTagName('input')[0];
+    inp1.id += len;
+    inp1.value = '';
+    var inp2 = new_row.cells[2].getElementsByTagName('input')[0];
+    inp2.id += len;
+    inp2.value = '';
+    x.appendChild( new_row );
+}
+</script>
+<div id="POItablediv">
+
+    <table id="POITable" border="1">
+        <tr>
+            <td>Task No.</td>
+            <td>Task Name</td>
+            <td>Days of Work</td>
+            <td>No. of hours</td>
+            <td>Delete Task?</td>
+            <td>Add Tasks?</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><input size=25 type="text" id="latbox"/></td>
+            <td>
+
+                
+                                     
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox">Mon
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox">Tue
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox">Wed
+                                            </label>
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox">Thur
+                                            </label>
+                                             <label class="checkbox-inline">
+                                                <input type="checkbox">Fri
+                                            </label>
+                                             <label class="checkbox-inline">
+                                                <input type="checkbox">Sat
+                                            </label>
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox">Sun
+                                            </label>
+                                        
+                                                    </td>
+                          <td><input size=25 type="number" id="latbox"/></td>
+            <td><input type="button" id="delPOIbutton" value="Delete" onclick="deleteRow(this)"/></td>
+            <td><input type="button" id="addmorePOIbutton" value="Add More " onclick="insRow()"/></td>
+        </tr>
+    </table>
+    <div>    <a href="login.html" class="btn btn-lg btn-success btn-block">Submit</a></div>
+    </body>
+    </html>
