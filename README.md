@@ -1,0 +1,1 @@
+Taskmania is an application designed to keep track of your success at tasks over a given period of time.
